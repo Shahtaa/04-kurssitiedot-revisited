@@ -1,18 +1,21 @@
 import React from 'react';
 
+const Total = ({ parts }) => (
+  <p><strong>total of {parts.reduce((total, part) => total + part.exercises, 0)} exercises</strong></p>
+);
+
 const Course = ({ course }) => {
   return (
     <div>
       <Header course={course} />
       <Content course={course} />
+      <Total parts={course.parts} />
     </div>
   );
 };
 
 const Header = ({ course }) => {
-  return (
-    <h1>{course.name}</h1>
-  );
+  return <h1>{course.name}</h1>;
 };
 
 const Content = ({ course }) => {
@@ -52,15 +55,20 @@ const App = () => {
         name: 'State of a component',
         exercises: 14,
         id: 3
+      },
+      {
+        name: 'Redux',
+        exercises: 11,
+        id: 4
       }
     ]
-  }
+  };
 
   return (
     <div>
       <Course course={course} />
     </div>
   );
-}
+};
 
 export default App;
