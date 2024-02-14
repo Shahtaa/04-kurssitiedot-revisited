@@ -1,3 +1,38 @@
+import React from 'react';
+
+const Course = ({ course }) => {
+  return (
+    <div>
+      <Header course={course} />
+      <Content course={course} />
+    </div>
+  );
+};
+
+const Header = ({ course }) => {
+  return (
+    <h1>{course.name}</h1>
+  );
+};
+
+const Content = ({ course }) => {
+  return (
+    <div>
+      {course.parts.map(part => (
+        <Part key={part.id} part={part} />
+      ))}
+    </div>
+  );
+};
+
+const Part = ({ part }) => {
+  return (
+    <p>
+      {part.name} {part.exercises}
+    </p>
+  );
+};
+
 const App = () => {
   const course = {
     name: 'Half Stack application development',
@@ -25,7 +60,7 @@ const App = () => {
     <div>
       <Course course={course} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
